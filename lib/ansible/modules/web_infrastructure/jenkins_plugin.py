@@ -340,6 +340,7 @@ class JenkinsPlugin(object):
             self.module.fail_json(
                 msg="Cannot parse %s JSON data." % what,
                 details=to_native(e))
+            raise e
 
         return json_data
 
@@ -363,6 +364,7 @@ class JenkinsPlugin(object):
         except Exception:
             e = get_exception()
             self.module.fail_json(msg=msg_exception, details=to_native(e))
+            raise e
 
         return response
 
